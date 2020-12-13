@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>  
+<html>
+<head>
+</head>
+<body>  
+    <h1></b><h1 style="text-align:center; color:red;">formPenilaian</b></h1>
+
+<?php
+// define variables and set to empty values
+$name = $email = $gender = $comment = $website = "";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $name = test_input($_POST["name"]);
+  $email = test_input($_POST["email"]);
+  $gender = test_input($_POST["gender"]);
+  $comment = test_input($_POST["kritik dan saran"]);
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+<link rel="stylesheet" type="text/css" href="css/style.css>
+<h2> Form penilaian toko kami</h2>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?> 
+  Name: <input type="text" name=" name">
+  <br>
+  <br>
+  E-mail: <input type="text" name="email">
+  <br>
+ <br>
+  Gender:
+  <input type="radio" name="gender" value="female">Female
+  <input type="radio" name="gender" value="male">Male
+  <input type="radio" name="gender" value="other">Other
+  <br><br>
+  <br>
+  kritik dan saran: <textarea name="kritik" rows="5" cols="40"></textarea>
+  <br><br>
+  <input type="submit" name="submit" value="Submit">  
+</form>
